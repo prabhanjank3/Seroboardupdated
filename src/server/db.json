@@ -1,0 +1,34 @@
+{
+    "users":[
+        {"id":"IAM12645", "firstname": "Prabhanjan", "lastname": "Kulkarni", "email": "prabhanjank3@gmail.com"},
+        {"id":"IAM12646", "firstname": "Anuja", "lastname": "Kulkarni", "email": "prabhanjan.g.kulkarni@gmail.com"}
+    ],
+    "goal":[
+        {"id": "GO18253","userid":"IAM12645", "goal_title":"Test goal 1", "goal_startdate":"2022-07-01", "goal_closedate":"2022-07-30", "goal_description":"Test", "goal_objective": "Test", "goal_comments":"Test"},
+        {"id": "GO18254","userid":"IAM12645", "goal_title":"Test goal 2", "goal_startdate":"2022-07-01", "goal_closedate":"2022-07-30", "goal_description":"Test", "goal_objective": "Test", "goal_comments":"Test"}
+    ],
+    "task":[
+        {"id": "TA18203", "goalid":"GO18253", "task_title": "Test task 1", "task_description": "Test", "task_startdate": "2022-07-05", "task_closedate": "2022-07-10", "task_state": "2", "task_type": "Regular", "isFlagged":false},
+        {"id": "TA18204", "goalid":"GO18253", "task_title": "Test task 2", "task_description": "Test", "task_startdate": "2022-07-05", "task_closedate": "2022-07-10", "task_state": "3", "task_type": "Regular", "isFlagged":false},
+        {"id": "TA18205", "goalid":"GO18254", "task_title": "Test task 1", "task_description": "Test", "task_startdate": "2022-07-05", "task_closedate": "2022-07-10", "task_state": "2", "task_type": "Regular", "isFlagged":false},
+        {"id": "TA18206", "goalid":"GO18254", "task_title": "Test task 2", "task_description": "Test", "task_startdate": "2022-07-05", "task_closedate": "2022-07-10", "task_state": "3", "task_type": "Regular", "isFlagged":false}
+    ],
+    "dashboard": [
+        {
+            "id": "GO18253",
+            "goal_title": "Test goal 1",
+            "tasks": [
+                {"id": "TA18203", "goalid":"GO18253", "task_title": "Test task 1", "task_description": "Test", "task_startdate": "2022-07-05", "task_closedate": "2022-07-10", "task_state": "4", "task_type": "Regular", "isFlagged":false},
+                {"id": "TA18204", "goalid":"GO18253", "task_title": "Test task 2", "task_description": "Test", "task_startdate": "2022-07-05", "task_closedate": "2022-07-10", "task_state": "5", "task_type": "Regular", "isFlagged":false}
+            ]
+        },
+        {
+            "id": "GO18254",
+            "goal_title": "Test goal 2",
+            "tasks": [
+                {"id": "TA18205", "goalid":"GO18254", "task_title": "Test task 1", "task_description": "Test", "task_startdate": "2022-07-05", "task_closedate": "2022-07-10", "task_state": "1", "task_type": "Regular", "isFlagged":false},
+                {"id": "TA18206", "goalid":"GO18254", "task_title": "Test task 2", "task_description": "Test", "task_startdate": "2022-07-05", "task_closedate": "2022-07-10", "task_state": "1", "task_type": "Regular", "isFlagged":false}
+            ]
+        }
+    ]
+}

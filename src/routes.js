@@ -32,25 +32,10 @@ const routes = [
     component: MainDashboard,
   },
   {
-    name: "NFT Marketplace",
-    layout: "/admin",
-    path: "/nft-marketplace",
-    icon: (
-      <Icon
-        as={MdOutlineShoppingCart}
-        width='20px'
-        height='20px'
-        color='inherit'
-      />
-    ),
-    component: NFTMarketplace,
-    secondary: true,
-  },
-  {
-    name: "Data Tables",
-    layout: "/admin",
+    name: "Analytics",
+    layout: "/rtl",
+    path: "/rtl",
     icon: <Icon as={MdBarChart} width='20px' height='20px' color='inherit' />,
-    path: "/data-tables",
     component: DataTables,
   },
   {
@@ -79,13 +64,6 @@ const routes = [
     ),
     component: SignUp,
     hide: true
-  },
-  {
-    name: "RTL Admin",
-    layout: "/rtl",
-    path: "/rtl-default",
-    icon: <Icon as={MdHome} width='20px' height='20px' color='inherit' />,
-    component: RTL,
   },
 ];
 

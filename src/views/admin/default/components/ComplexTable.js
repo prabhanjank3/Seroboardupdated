@@ -24,7 +24,9 @@ import Card from "components/card/Card";
 import Menu from "components/menu/MainMenu";
 
 // Assets
-import { MdCheckCircle, MdCancel, MdOutlineError } from "react-icons/md";
+import { MdCheckCircle, MdCancel, MdFlag,MdAssignment,MdPauseCircle } from "react-icons/md";
+import { Link } from "react-router-dom";
+import ProgressDropdown from "components/custom/progressDropdown";
 export default function ColumnsTable(props) {
   const { columnsData, tableData } = props;
 
@@ -60,14 +62,15 @@ export default function ColumnsTable(props) {
       px='0px'
       overflowX={{ sm: "scroll", lg: "hidden" }}>
       <Flex px='25px' justify='space-between' mb='10px' align='center'>
-        <Text
+        {/* <Text
           color={textColor}
           fontSize='22px'
           fontWeight='700'
           lineHeight='100%'>
           Complex Table
-        </Text>
-        <Menu />
+        </Text> */}
+        {/* <Menu /> */}
+        <ProgressDropdown />
       </Flex>
       <Table {...getTableProps()} variant='simple' color='gray.500' mb='24px'>
         <Thead>
@@ -94,17 +97,20 @@ export default function ColumnsTable(props) {
         <Tbody {...getTableBodyProps()}>
           {page.map((row, index) => {
             prepareRow(row);
+            
             return (
-              <Tr {...row.getRowProps()} key={index}>
+              <Tr {...row.getRowProps()} key={index} mx="10px">
                 {row.cells.map((cell, index) => {
                   let data = "";
-                  if (cell.column.Header === "NAME") {
+                  if (cell.column.Header === "ID") {
                     data = (
-                      <Text color={textColor} fontSize='sm' fontWeight='700'>
+                      <Link to={"/home"}>
+                      <Text color={"blue"} fontSize='sm' fontWeight='700'>
                         {cell.value}
                       </Text>
+                      </Link>
                     );
-                  } else if (cell.column.Header === "STATUS") {
+                  } else if (cell.column.Header === "Progress") {
                     data = (
                       <Flex align='center'>
                         <Icon
@@ -112,30 +118,59 @@ export default function ColumnsTable(props) {
                           h='24px'
                           me='5px'
                           color={
-                            cell.value === "Approved"
+                            cell.value === "4"
                               ? "green.500"
-                              : cell.value === "Disable"
+                              : cell.value === "5"
                               ? "red.500"
-                              : cell.value === "Error"
+                              : cell.value === "3"
+                              ? "green.500"
+                              : cell.value === "2"
                               ? "orange.500"
+                              : cell.value === "1"
+                              ? "navy.500"
                               : null
                           }
                           as={
-                            cell.value === "Approved"
+                            cell.value === "4"
                               ? MdCheckCircle
-                              : cell.value === "Disable"
+                              : cell.value === "5"
                               ? MdCancel
-                              : cell.value === "Error"
-                              ? MdOutlineError
+                              : cell.value === "3"
+                              ? MdCheckCircle
+                              : cell.value === "2"
+                              ? MdPauseCircle
+                              : cell.value === "1"
+                              ? MdAssignment
                               : null
                           }
                         />
+                        <Text color={textColor} fontSize='sm' fontWeight='700'>
+                          {cell.value === "4"
+                              ? "Accepted"
+                              : cell.value === "5"
+                              ? "Blocked"
+                              : cell.value === "3"
+                              ? "Completed"
+                              : cell.value === "2"
+                              ? "In Progress"
+                              : cell.value === "1"
+                              ? "Defined"
+                              :null
+                            }
+                        </Text>
+                      </Flex>
+                    );
+                  }
+                  else if (cell.column.Header === "Title") {
+                    data = (
+                      <Flex align='center'>
                         <Text color={textColor} fontSize='sm' fontWeight='700'>
                           {cell.value}
                         </Text>
                       </Flex>
                     );
-                  } else if (cell.column.Header === "DATE") {
+                  }
+                  else if (cell.column.Header === "Deadline") {
                     data = (
                       <Text color={textColor} fontSize='sm' fontWeight='700'>
                         {cell.value}
@@ -154,6 +189,11 @@ export default function ColumnsTable(props) {
                       </Flex>
                     );
                   }
+                  else if (cell.column.Header === "Flagged") {
+                    data = (
+                      <MdFlag color = {(cell.value === true) ?"red":null} fontSize={20} />
+                    );
+                  } 
                   return (
                     <Td
                       {...cell.getCellProps()}

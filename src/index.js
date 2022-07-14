@@ -9,6 +9,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import theme from "theme/theme";
 import { AuthProvider } from "./auth-context/auth.context";
 import { ProtectedRoute } from "./layouts/protected.route.js";
+import {Provider} from 'react-redux';
+import store from './redux/store';
 
 let user = localStorage.getItem("user");
 user = JSON.parse(user);
@@ -17,12 +19,14 @@ ReactDOM.render(
     <AuthProvider userData={user}>
     <React.StrictMode>
       <HashRouter>
+        <Provider store={store}>
         <Switch>
           <Route path={`/auth`} component={AuthLayout} />
           <ProtectedRoute path={`/admin`} component={AdminLayout} />
           <ProtectedRoute path={`/rtl`} component={RTLLayout} />
           <Redirect from='/' to='/admin/dashboards' />
         </Switch>
+        </Provider>
       </HashRouter>
     </React.StrictMode>
     </AuthProvider>
